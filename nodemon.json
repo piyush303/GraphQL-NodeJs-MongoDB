@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGO_USER": "piyush",
+    "MONGO_PASS": "MebozWkB6AeeGRFJ",
+    "MONGO_DB": "app-graphql-mongo-node-react"
+  }
+}
