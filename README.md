@@ -1,5 +1,11 @@
 # GraphQL-NodeJs-MongoDB
 
+To start this project run these commands
+```
+npm install
+npm run start
+```
+
 ## Create User
 ```
 mutation {
