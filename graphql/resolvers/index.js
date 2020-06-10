@@ -66,8 +66,6 @@ module.exports = {
         user: args.bookingInput.user
       });
 
-      console
-
       const result = await booking.save();
       const user = await User.findById(args.bookingInput.user);
       return { ...result._doc, user: user }
