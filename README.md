@@ -5,6 +5,7 @@ To start this project run these commands
 npm install
 npm run start
 ```
+open project in browser using url localhost:5050/graphql
 
 ## Create User
 ```
