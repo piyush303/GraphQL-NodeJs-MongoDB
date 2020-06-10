@@ -2,12 +2,31 @@ const User = require('../../models/user');
 const Bookings = require('../../models/bookings');
 
 module.exports = {
+  user: async(args) => {
+    try {
+      const user = await User.findById(args._id);
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  },
+
   users: async() => {
     try {
       const users =  await User.find();
       return users.map(user => {
         return { ...user._doc, _id: user.id };
       })
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  booking: async(args) => {
+    try {
+      const booking = await Bookings.findById(args._id);
+      const user = await User.findById(booking.user._id.toString());
+      return { ...booking._doc, user };
     } catch (error) {
       throw error;
     }
@@ -44,11 +63,14 @@ module.exports = {
       const booking = new Bookings({
         source: args.bookingInput.source,
         destination: args.bookingInput.destination,
-        user: '5ed9d76156d1a326523eeee8'
+        user: args.bookingInput.user
       });
 
+      console
+
       const result = await booking.save();
-      return { ...result._doc }
+      const user = await User.findById(args.bookingInput.user);
+      return { ...result._doc, user: user }
     } catch (error) {
       throw error;
     }

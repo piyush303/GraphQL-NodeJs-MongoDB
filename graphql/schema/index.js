@@ -24,10 +24,13 @@ module.exports = buildSchema(`
   input BookingInput {
     source: String!
     destination: String!
+    user: String!
   }
 
   type RootQuery {
+    user(_id: String): User
     users: [User!]
+    booking(_id: String): Booking
     bookings: [Booking!]
   }
 
